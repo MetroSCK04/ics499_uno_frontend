@@ -1,18 +1,27 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomeComponent } from './Home/home.component';
+import { StatsComponent } from './Stats/stats.component';
+import { UnoComponent } from './Uno/uno.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomeComponent,
+    StatsComponent,
+    UnoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'stats', component: StatsComponent },
+      { path: 'uno', component: UnoComponent }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

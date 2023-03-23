@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+    <div class="stat-page">
+        <h1>Stats Page</h1>
+        <p>Here are some statistics:</p>
+        <div class="btn-group">
+          <button class="btn" (click)="showStats('7 days')">7 Days</button>
+          <button class="btn" (click)="showStats('1 month')">1 Month</button>
+          <button class="btn" (click)="showStats('6 months')">6 Months</button>
+        </div>
+        <p>{{ selectedPeriod }} Stats:</p>
+        <ul>
+          <li>Stat 1</li>
+          <li>Stat 2</li>
+          <li>Stat 3</li>
+        </ul>
+        <a routerLink="/" class="btn">Go to Home</a>
+      </div>
+      
