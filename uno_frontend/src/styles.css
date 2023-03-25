@@ -23,6 +23,7 @@ header{
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .header-btn:hover{
@@ -43,7 +44,7 @@ body{
 }
 
 .background-img{
-  background-image: url(/guled/Downloads/background-image.png);
-  height: 756px;
-  width: 1680px;
+  background-image: url(/Users/guled/Documents/GitHub/ics499_uno_frontend/uno_frontend/src/app/home-page/background-image.png);
+  height: 300px;
+  width: 300px;
 }
