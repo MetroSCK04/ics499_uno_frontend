@@ -1,9 +1,49 @@
 <!doctype html>
+`
 <html lang="en">
-    <div class="home-page">
-        <h1>Welcome to Uno!</h1>
-        <p>This is the home page content.</p>
-        <a routerLink="/stats-page" class="btn stats-btn">Go to Stats</a>
-        <a routerLink="/uno-page" class="btn play-btn">Go to Uno</a>
-        
-      </div>
+  <head >
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Website</title> 
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Games</a></li>
+          <li><a routerLink="/stats-page" >Go to Stats</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="hero">
+        <h1>Welcome to Game Website</h1>
+        <p>Play the best games on the web!</p>
+        <a routerLink="/uno-page" class="btn">Get started</a>
+      </section>
+      <section class="games">
+        <h2>Popular Games</h2>
+        <div class="game-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/UNO_Logo.svg/2560px-UNO_Logo.svg.png" width="10%" 
+     height="10%"alt="Game 1" />
+          <h3>Uno</h3>
+          <p>Play Uno now and have fun!</p>
+          <a routerLink="/uno-page"  class="btn">Play Uno</a>
+        </div>
+      </section>
+      <section class="about">
+        <h2>About Game Website</h2>
+        <p>
+          Game Website is the best place to play online games. With a wide variety
+          of games to choose from, you'll never get bored. Our games are free to
+          play and don't require any downloads.
+        </p>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2023 Game Website. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

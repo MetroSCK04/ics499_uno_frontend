@@ -3,21 +3,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 /* Styles for home page */
-.home-page {
-  background-color: #9f2121;
-  padding: 100px;
+body {
+  margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  text-align: center;
+  font-size: 16px;
 }
 
-/* Styles for buttons */
-.btn {
-  display: inline-flex;
+header {
+  background-color: #333;
+  color: #1301015d;
+  padding: 20px;
+ 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
+}
+
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  background-color: #4CAF50;
-  color: white;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #ddd;
+}
+
+main {
+  padding: 40px;
+}
+
+.hero {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #333;
+  color: #fff;
   padding: 10px 20px;
   text-decoration: none;
   font-size: 16px;
@@ -25,4 +70,161 @@
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
   margin: 0 10px;
+}
+
+.btn:hover {
+  background-color: #222;
+}
+
+.games {
+  margin-bottom: 40px;
+}
+
+.games h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.game-card {
+  background-color: #333; /*#fff;*/
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.game-card img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.game-card h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.game-card p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.game-card .btn {
+  display: block;
+  margin: 0 auto;
+}
+
+.about {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-link {
+  margin-left: 20px;
+}
+
+.nav-link.active {
+  color: #4CAF50;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.stats {
+  margin-top: 50px;
+}
+
+.stats h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.stats ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stats li {
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #3e8e41;
+}
+
+.button-group {
+  margin-top: 20px;
+  text-align: center;
+}
+.footer {
+  text-align: center;
+}
+.stat-header{
+  color:#fff;
+  text-align: center;
+}
+.uno-header{
+  display: flex;
+  margin: 10px;
+}
+
+header .uno-header nav ul li {
+  margin-right: 10px; /* add margin to the right of each link */
+}
+
+header .uno-header nav ul li:last-child {
+  margin-right: 0; /* remove margin from the last link */
 }
