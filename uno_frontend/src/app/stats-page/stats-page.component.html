@@ -6,22 +6,24 @@
   </head>
   <body>
     <div class="stat-page">
-      <header class="stat-header">
+      <header class="uno-header">
         <nav>
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a routerLink="/stats-page" >Your Stats Page</a></li>
           </ul>
         </nav>
       </header>
-      <p>Here are some statistics:</p>
+      <p class="uno-header">Here are your Stats</p>
       <div class="button-group">
+
         <button class="btn" (click)="showStats('7 days')">7 Days</button>
         <button class="btn" (click)="showStats('1 month')">1 Month</button>
         <button class="btn" (click)="showStats('6 months')">6 Months</button>
       </div>
+      
+    <div class="stats" >
+      
       <p>{{ selectedPeriod }} Stats:</p>
-      <div class="button-group">
       <ul>
         <li>Stat 1</li>
         <li>Stat 2</li>
