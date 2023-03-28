@@ -3,184 +3,476 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
-/* global */
-*{
+/* Styles for home page */
+body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 
-header{ 
-  padding: 1rem 0 1rem 0;
-  background-color: pink;
+header {
+  background-color: #333;
+  color: #1301015d;
+  padding: 20px;
+ 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  
 }
 
-.header-btn{
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: #ddd;
+}
+
+main {
+  padding: 40px;
+}
+
+.hero {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
+.btn {
   display: inline-block;
-  position: relative;
-  margin-left: 1.2rem;
+  background-color: #333;
+  color: #fff;
+
   padding: 10px 20px;
   color: white;
   background-color: darkred;
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  text-decoration: none;
+
+  transition: background-color 0.3s ease-in-out;
+  margin: 0 10px;
 }
 
-.header-btn:hover{
-  background-color: #c41687;
-  transition: 0.1s;
+.btn:hover {
+  background-color: #222;
 }
 
-body{
-  background-color: darkred;
+.games {
+  margin-bottom: 40px;
 }
 
-/* homepage */
-.title{
-  padding-top: 2.5rem;
-  display: block;
-  color: black;
-  font-size: 32px;
+.games h2 {
+  font-size: 36px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
-.background-img{
-  background-image: url(/Users/guled/Documents/GitHub/ics499_uno_frontend/uno_frontend/src/app/home-page/background-image.png);
-  height: 0;
-  width: 0;
+.game-card {
+  background-color: #333; /*#fff;*/
+  border: 1px solid #ddd;
+  color: white;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.start-game-modal{
-  display: block;
-  background-color: whitesmoke;
-  margin: 3rem auto auto;
-  padding: 10px;
-  border: 1px solid black;
-  width: 30%;
-  border-radius: 20px;
+.game-card img {
+  max-width: 100%;
+  margin-bottom: 20px;
 }
 
-#player-title{
-  width: 100%;
-  height: 40px;
-  text-align: center;
+.game-card h3 {
   font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.player-num-btn{
-  background-color: white;
+.game-card p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.game-card .btn {
   display: block;
-  font-size: 18px;
-  margin: auto;
-  width: 50%;
-  height: 30px;
-  padding: 3px;
-  margin-bottom: 6px;
-  border: 2px solid black;
-  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.about {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header */
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-link {
+  margin-left: 20px;
+}
+
+.nav-link.active {
+  color: #4CAF50;
+}
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+.stats {
+  margin-top: 50px;
+}
+
+.stats h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.stats ul {
+  list-style: none;
+  padding: 0;
+}
+
+.stats li {
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4CAF50;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.player-num-btn:hover{
-  background-color: lightgray;
-  transition: 0.1s;
+.btn:hover {
+  background-color: #3e8e41;
 }
 
-#player-one{
-  display: block;
+.button-group {
+  margin-top: 20px;
+  text-align: center;
+}
+.footer {
+  text-align: center;
+}
+.stat-header{
+  margin: 10px;
+  color:#fff;
+  text-align: center;
+}
+.stats{
+  text-align: center;
+  background-color: #333;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+   margin: auto;
+   margin-top: 50px;
+ 
+}
+.uno-header{
+
+  margin: 10px;
 }
 
-form .text_field {
+header .uno-header nav ul li {
+  margin-right: 10px; /* add margin to the right of each link */
+}
+
+header .uno-header nav ul li:last-child {
+  margin-right: 0; /* remove margin from the last link */
+}
+/*Uno Card Starts here*/
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial;
+  perspective: 100em;
+}
+/* CARDS STYLES */
+.card {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.8em;
+  padding: 0.3em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: 200ms;
   position: relative;
-  border-bottom: 2px solid #787c7e;
-  margin: 30px 0 10px;
 }
-
-.text_field input {
-  width: 70%;
-  padding: 0 50px;
-  height: 40px;
-  font-size: 14px;
-  border: none;
-  background: none;
-  outline: none;
+.card .bckg {
+  width: 5em;
+  height: 7.678500000000001em;
+  border-radius: 0.5em;
+  overflow: hidden;
+  position: relative;
 }
-
-.text_field label {
+.card .bckg::before {
+  content: '';
+  width: 5em;
+  height: 6.5em;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  transform-origin: center center;
+  border-radius: 90% 40%;
+}
+.card .center-icon {
   position: absolute;
   top: 50%;
-  left: 5px;
-  color: #787c7e;
-  transform: translateY(-50%);
-  font-size: 16px;
-  pointer-events: none;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
 }
-
-.text_field span::before {
-  content: '';
+.card.red {
+  color: #dc251c;
+}
+.card.red .bckg {
+  background-color: #dc251c;
+}
+.card.yellow {
+  color: #fcf604;
+}
+.card.yellow .bckg {
+  background-color: #fcf604;
+}
+.card.blue {
+  color: #0493de;
+}
+.card.blue .bckg {
+  background-color: #0493de;
+}
+.card.green {
+  color: #018d41;
+}
+.card.green .bckg {
+  background-color: #018d41;
+}
+.card.black {
+  color: #1f1b18;
+}
+.card.black .bckg {
+  background-color: #1f1b18;
+}
+.card.turned:hover {
+  cursor: default;
+}
+.card.turned .bckg {
+  background-color: #1f1b18;
+}
+.card.turned .bckg::before {
+  background-color: #dc251c;
+}
+.game-field #piles_area {
+  position: relative;
+  border-radius: 4em;
+  transition: 200ms;
+}
+.game-field.yellow #piles_area {
+  background-color: rgba(252,246,4,0.4);
+}
+.game-field.blue #piles_area {
+  background-color: rgba(4,147,222,0.4);
+}
+.game-field.red #piles_area {
+  background-color: rgba(220,37,28,0.4);
+}
+.game-field.green #piles_area {
+  background-color: rgba(1,141,65,0.4);
+}
+#draw_pile {
   position: absolute;
-  top: 40px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background: #6aaa64;
-  transition: .5s;
+  left: 5em;
+  top: 5em;
 }
-
-.text_field input:focus~label,
-.text_field input:valid~label {
-  top: -5px;
-  color: #6aaa64;
+#draw_pile .card.top-card,
+#draw_pile .card.pile {
+  position: absolute;
 }
-
-.text_field input:focus~span::before,
-.text_field input:valid~span::before {
-  width: 70%;
+#draw_pile .card.pile {
+  box-shadow: 0px 2px #fff, 0px 4px rgba(0,0,0,0.16), 0px 6px #fff, 0px 8px rgba(0,0,0,0.16), 0px 10px #fff, 0px 12px rgba(0,0,0,0.16), 0px 14px #fff, 0px 16px rgba(0,0,0,0.16), 0px 18px #fff, 0px 20px rgba(0,0,0,0.16);
 }
-
-input[type="submit"] {
-  margin: auto 135px auto;
-  width: 40%;
-  height: 50px;
-  border: 1px solid;
-  background: #787c7e;
-  border-radius: 25px;
-  font-size: 18px;
-  color: #e9f4fb;
-  font-weight: 700;
+#draw_pile .card.pile:hover {
+  transform: none;
+}
+#draw_pile .card.top-card {
+  z-index: 100;
+  box-shadow: none;
+}
+#draw_pile .card.top-card:hover {
+  box-shadow: 0px 4px rgba(0,0,0,0.16);
   cursor: pointer;
-  outline: none;
+  transform: translateY(1em);
 }
-
-input[type="submit"]:hover {
-  background: #6aaa64;
-  border-color: #adadad;
-  transition: .5s;
+#discard_pile {
+  position: absolute;
+  left: 12em;
+  top: 5.7em;
 }
-
-/* unopage */
-
-.game-screen{
-  background-color: #a74242;
-  height: 700px;
-  width:  550px;
-  margin: 20px auto auto;
+#discard_pile .card.top-card,
+#discard_pile .card.pile {
+  position: absolute;
+}
+#discard_pile .card.pile {
+  box-shadow: 0px 2px #fff, 0px 4px rgba(0,0,0,0.16), 0px 6px #fff, 0px 8px rgba(0,0,0,0.16);
+}
+#discard_pile .card.pile:hover {
+  transform: none;
+}
+#discard_pile .card.top-card {
+  z-index: 100;
+  box-shadow: none;
+}
+.game-field {
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-gap: 0.5em;
+  grid-template-columns: 12em 24em 12em;
+  grid-template-rows: 12em 24em 12em;
+}
+.game-field.perspective {
+  transform: rotateX(30deg);
+}
+#piles_area {
+  grid-area: 2/2;
+}
+#player {
+  grid-area: 3/2;
+}
+#player_left {
+  grid-area: 2/1;
+}
+#player_top {
+  grid-area: 1/2;
+}
+#player_right {
+  grid-area: 2/3;
+}
+.player_hand {
   position: relative;
 }
-
-.player-gamer-tag{
-  color: white;
-}
-
-#user-one{
-  padding: 18px 0 0 15px;
-}
-
-#user-two{
+.player_hand .card {
   position: absolute;
-  bottom: 18px;
-  padding: 0 0 0 15px;
+}
+.player_hand .card:nth-child(1) {
+  left: 2.2em;
+}
+.player_hand .card:nth-child(2) {
+  left: 4.4em;
+}
+.player_hand .card:nth-child(3) {
+  left: 6.600000000000001em;
+}
+.player_hand .card:nth-child(4) {
+  left: 8.8em;
+}
+.player_hand .card:nth-child(5) {
+  left: 11em;
+}
+.player_hand .card:nth-child(6) {
+  left: 13.200000000000001em;
+}
+.player_hand .card:nth-child(7) {
+  left: 15.400000000000002em;
+}
+#player .player_hand .card {
+  cursor: pointer;
+}
+#player .player_hand .card:hover {
+  transform-origin: left bottom;
+  transform: rotate(-10deg) translateY(-0.5em);
+}
+#player .player_hand .card:hover~ .card {
+  transform: translateX(2em);
+}
+#player_left .player_hand {
+  transform-origin: left bottom;
+  transform: rotate(90deg) translateY(-10em);
+}
+#player_top .player_hand {
+  transform: translateY(1em);
+}
+#player_right .player_hand {
+  transform-origin: left bottom;
+  transform: rotate(-90deg) translate(-24em, 1em);
+}
+/*uno Card ends here*/
+.quit-btn{
+  background-color: #a00c0c;
+  float: right
+}
+.hidden {
+  display: none;
 }
 

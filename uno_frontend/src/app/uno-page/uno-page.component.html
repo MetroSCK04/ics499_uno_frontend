@@ -1,24 +1,109 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<header>
-    <a routerLink="/" class="header-btn">Quit</a>
-</header>
+<head>
+  <meta charset="utf-8">
+  <title>Uno Game</title>
+
+</head>
 <body>
-  <div class="game-screen"> 
-    <div id="user-one">
-      <div class="player-gamer-tag"><p>User 1</p></div>
-      <div class="user-hand"> 
-        <img src="/Users/guled/Documents/GitHub/ics499_uno_frontend/uno_frontend/src/app/uno-page/cards-img/Green 1.png" alt="back">
-      </div>
+  <div class="game-container">
+    <div class="game-header">
+      <header class="stat-header">
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a routerLink="/stats-page" >My Stats</a></li>
+          </ul>
+        </nav>
+      </header>
     </div>
-    <div id="user-two">
-      <div class="user-hand"> 
-        <img src="/Users/guled/Documents/GitHub/ics499_uno_frontend/uno_frontend/src/app/uno-page/cards-img/Green 1.png" alt="back">
+    <div class="game-body">
+      <div>
+        <a href="#"  class="btn quit-btn">Quit</a>
       </div>
-      <div class="player-gamer-tag"><p>User 2</p></div>
+      <div class="player-area">
+       
+<div class="game-field perspective red">
+  <div id="player">(You)
+    <div class="player_hand">
+      <div class="card red" data-key="0">
+        <div class="bckg"></div>
+      </div>
+      <div class="card red" data-key="1">
+        <div class="bckg"></div>
+      </div>
+      <div class="card blue" data-key="0">
+        <div class="bckg"></div>
+      </div>
+      <div class="card blue" data-key="1">
+        <div class="bckg"></div>
+      </div>
+      <div class="card yellow">
+        <div class="bckg"></div>
+      </div>
+      <div class="card green">
+        <div class="bckg"></div>
+      </div>
+      <div class="card black">
+        <div class="bckg"></div>
+      </div>
     </div>
   </div>
+
+  <div id="player_top">Oponent
+    <div class="player_hand">
+      <div class="card turned" data-index="0">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned" data-index="1">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned" data-index="2">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned" data-index="3">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned" data-index="4">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned" data-index="5">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned" data-index="6">
+        <div class="bckg"></div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  <div id="piles_area">
+    <div id="draw_pile">
+      <div class="card turned top-card">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned pile">
+        <div class="bckg"></div>
+      </div>
+    </div>
+    <div id="discard_pile">
+      <div class="card top-card red">
+        <div class="bckg"></div>
+      </div>
+      <div class="card pile">
+        <div class="bckg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <p>&copy; 2023 Game Website. All rights reserved.</p>
+  </footer>
 </body>
 </html>
-
