@@ -14,7 +14,7 @@ header {
   background-color: #333;
   color: #1301015d;
   padding: 20px;
- 
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   
 }
@@ -211,7 +211,7 @@ a:hover {
   text-align: center;
 }
 .stat-header{
-  margin: 10px;
+  margin-top: 10px;
   color:#fff;
   text-align: center;
 }
@@ -231,7 +231,7 @@ a:hover {
 }
 .uno-header{
 
-  margin: 10px;
+  margin-top: 25px;
 }
 
 header .uno-header nav ul li {

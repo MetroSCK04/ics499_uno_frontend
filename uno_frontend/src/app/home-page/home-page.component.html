@@ -11,16 +11,16 @@
       <nav>
         <ul>
           <li><a href="#">Home</a></li>
-          <li><a href="#">Games</a></li>
+          <li><a href="#">Settings</a></li>
           <li><a routerLink="/stats-page" >Go to Stats</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a (click)="openDialog()">{{username || 'Login'}}</a></li>
         </ul>
       </nav>
     </header>
     <main>
       <section class="hero">
-        <h1>Welcome to Game Website</h1>
-        <p>Play the best games on the web!</p>
+        <h1>Welcome to UnoMania</h1>
+        <p>Play the best  Uno game on the web!</p>
         <a routerLink="/uno-page" class="btn">Get started</a>
       </section>
       <section class="games">
@@ -34,16 +34,21 @@
         </div>
       </section>
       <section class="about">
-        <h2>About Game Website</h2>
+        <h2>About UnoMania</h2>
         <p>
-          Game Website is the best place to play uno. With a wide variety
+          UnoMania is the best place to play uno. With a wide variety
           of features to choose from, you'll never get bored. Our games are free to
           play and don't require any downloads.
         </p>
       </section>
     </main>
     <footer class="footer">
-      <p>&copy; 2023 Game Website. All rights reserved.</p>
+      <p>&copy; 2023 UnoMania. All rights reserved.</p>
     </footer>
   </body>
 </html>
+
+
+
+
+

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PopUpComponent } from './pop-up/pop-up.component';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BoardGameProject';
+ 
 }
+
+
+
+
+
