@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../pop-up/pop-up.component';
@@ -9,16 +10,21 @@ import { PopUpComponent } from '../pop-up/pop-up.component';
   styleUrls: ['./home-page.component.css']
 })
 
-export class HomePageComponent {
+export class HomePageComponent implements OnInit{
   public username: string = '';
   message: string = 'Fields are working';
 
-  constructor(private router: Router, private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog,private route: ActivatedRoute) { }
 
   goToStats() {
     this.router.navigate(['/stat-page']);
   }
-
+  ngOnInit() {
+    // Get the username from the parameter
+    this.route.queryParams.subscribe(params => {
+      this.username = params['username'];
+    });
+  }
 
 
   openDialog() {
