@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -29,6 +30,7 @@ import { CreateAccPageComponent } from './create-acc-page/create-acc-page.compon
     MatDialogModule,
     FormsModule, 
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
       { path: 'stats-page', component: StatsPageComponent },
