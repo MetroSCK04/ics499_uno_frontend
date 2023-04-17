@@ -14,7 +14,7 @@ import { UnoPageComponent } from './uno-page/uno-page.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateAccPageComponent } from './create-acc-page/create-acc-page.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UnoCardComponent } from './uno-page/uno-card/uno-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UnoPageComponent,
     PopUpComponent,
     LoginPageComponent,
-    CreateAccPageComponent
+    CreateAccPageComponent,
+    UnoCardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +39,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'uno-page', component: UnoPageComponent },
       { path: 'login-page', component: LoginPageComponent },
       { path: 'create-page', component: CreateAccPageComponent }
-    ]),
-    BrowserAnimationsModule
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

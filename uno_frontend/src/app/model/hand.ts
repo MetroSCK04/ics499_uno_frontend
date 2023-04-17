@@ -1,6 +1,5 @@
-import { Card } from "./card";
+import { Card } from './card';
 
 export class Hand {
-    hand!: Array<Card>;
-    
+    cards: Card[] = [];
 }
