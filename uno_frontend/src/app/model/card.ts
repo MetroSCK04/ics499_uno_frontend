@@ -1,5 +1,11 @@
 export class Card {
-    cardId: number=0;
-    color: String = "";
-
-}
+    cardID?: number;
+    color: string;
+    num: number;
+  
+    constructor(color: string, num: number) {
+      this.color = color;
+      this.num = num;
+    }
+  }
+  
