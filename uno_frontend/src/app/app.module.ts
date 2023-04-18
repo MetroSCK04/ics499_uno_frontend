@@ -14,7 +14,6 @@ import { UnoPageComponent } from './uno-page/uno-page.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateAccPageComponent } from './create-acc-page/create-acc-page.component';
-import { UnoCardComponent } from './uno-page/uno-card/uno-card.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { UnoCardComponent } from './uno-page/uno-card/uno-card.component';
     UnoPageComponent,
     PopUpComponent,
     LoginPageComponent,
-    CreateAccPageComponent,
-    UnoCardComponent
+    CreateAccPageComponent
   ],
   imports: [
     BrowserModule,

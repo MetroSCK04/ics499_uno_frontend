@@ -5,6 +5,8 @@ import { Useraccount } from '../model/useraccount';
 import { UnoService } from '../services/uno.service';
 import { UsrinfoaccountService } from '../services/usrinfoaccount.service';
 
+
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -15,42 +17,47 @@ export class LoginPageComponent implements OnInit {
   password: string = '';
   loginForm: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private userinfo: UsrinfoaccountService) {
+
+  constructor(private router: Router,private formBuilder: FormBuilder, private userinfo: UsrinfoaccountService) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
-
+  //here
+ 
   userAccounts: Useraccount[] = [];
 
   ngOnInit() {
     this.userinfo.all().subscribe(users => {
       this.userAccounts = users as unknown as Useraccount[];
-      console.log(this.userAccounts);
+      console.log(this.userAccounts)
+       
     });
+
   }
+  //here
 
   onSubmit() {
-    // Save the entered username and password in variables
+    // Save the entered username in a variable
     this.username = this.loginForm.value.username;
-    this.password = this.loginForm.value.password;
-
-    // Check if the entered username and password are correct
-    if (this.isPasswordCorrect(this.username, this.password)) {
-      // Navigate to the home page with the username parameter
-      this.router.navigate([''], { queryParams: { username: this.username } });
+  
+    // Check if the entered username is already taken
+    if (this.isUsernameTaken(this.username)) {
+      alert('This username is already taken. Please enter a different username.');
     } else {
-      alert('Invalid username or password. Please try again.');
+      // navigate to the home page with the username parameter
+      this.router.navigate([''], { queryParams: { username: this.username } });
     }
   }
-
-  isPasswordCorrect(username: string, password: string): boolean {
+  
+  isUsernameTaken(username: string): boolean {
     for (const user of this.userAccounts) {
-      if (user.username === username && user.password === password) {
+      if (user.username === username) {
         return true;
       }
     }
     return false;
   }
+
 }
