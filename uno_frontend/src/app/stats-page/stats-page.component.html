@@ -1,19 +1,40 @@
 <!doctype html>
 <html lang="en">
-    <div class="stats-page">
-        <h1>Stats Page</h1>
-        <p>Here are some statistics:</p>
-        <div class="btn-group">
-          <button class="btn" (click)="showStats('7 days')">7 Days</button>
-          <button class="btn" (click)="showStats('1 month')">1 Month</button>
-          <button class="btn" (click)="showStats('6 months')">6 Months</button>
-        </div>
-        <p>{{ selectedPeriod }} Stats:</p>
-        <ul>
-          <li>Stat 1</li>
-          <li>Stat 2</li>
-          <li>Stat 3</li>
-        </ul>
-        <a routerLink="/" class="btn">Go to Home</a>
+  <head>
+    <meta charset="utf-8">
+    <title>Stats Page</title>
+  </head>
+  <body>
+    <div class="stat-page">
+      <header class="uno-header">
+        <nav>
+          <ul>
+            <li><a routerLink="">Home</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a routerLink="/stats-page" >Go to Stats</a></li>
+            <li *ngIf="!username"><a routerLink="/login-page" >Login</a></li>
+      <li *ngIf="username"><span>Welcome, {{ username }}!</span></li>
+          </ul>
+        </nav>
+      </header>
+      <p class="uno-header">Here are your Stats</p>
+      <div class="button-group">
+
+        <button class="btn" (click)="showStats('7 days')">7 Days</button>
+        <button class="btn" (click)="showStats('1 month')">1 Month</button>
+        <button class="btn" (click)="showStats('6 months')">6 Months</button>
       </div>
       
+    <div class="stats" >
+      
+      <p>{{ selectedPeriod }} Stats:</p>
+      <ul>
+        <li>Stat 1</li>
+        <li>Stat 2</li>
+        <li>Stat 3</li>
+      </ul>
+    </div>
+   
+    </div>
+  </body>
+</html>

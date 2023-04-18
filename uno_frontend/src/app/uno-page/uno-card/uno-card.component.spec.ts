@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatsPageComponent } from './stats-page.component';
+import { UnoCardComponent } from './uno-card.component';
 
-describe('StatsPageComponent', () => {
-  let component: StatsPageComponent;
-  let fixture: ComponentFixture<StatsPageComponent>;
+describe('UnoCardComponent', () => {
+  let component: UnoCardComponent;
+  let fixture: ComponentFixture<UnoCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatsPageComponent ]
+      declarations: [ UnoCardComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StatsPageComponent);
+    fixture = TestBed.createComponent(UnoCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

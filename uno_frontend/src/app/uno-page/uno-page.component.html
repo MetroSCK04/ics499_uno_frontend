@@ -1,24 +1,165 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<header>
-    <a routerLink="/" class="header-btn">Quit</a>
-</header>
+<head>
+  <meta charset="utf-8">
+  <title>Uno Game</title>
+
+</head>
 <body>
-  <div class="game-screen"> 
-    <div id="user-one">
-      <div class="player-gamer-tag"><p>User 1</p></div>
-      <div class="user-hand"> 
-        <img src="/Users/guled/Documents/GitHub/ics499_uno_frontend/uno_frontend/src/app/uno-page/cards-img/Green 1.png" alt="back">
+  <div class="game-container">
+    <div class="game-header">
+      <header class="uno-header">
+        <nav>
+          <ul>
+            <li><a routerLink="">Home</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a routerLink="/stats-page" >Go to Stats</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div class="game-body">
+      <div>
+        <a href="#"  class="btn quit-btn">Quit</a>
+      </div>
+      <div class="player-area">
+       
+<div class="game-field perspective red">
+  
+
+
+  
+ 
+  <div id="piles_area">
+    <div id="draw_pile">
+      <div class="card turned top-card">
+        <div class="bckg"></div>
+      </div>
+      <div class="card turned pile">
+        <div class="bckg"></div>
       </div>
     </div>
-    <div id="user-two">
-      <div class="user-hand"> 
-        <img src="/Users/guled/Documents/GitHub/ics499_uno_frontend/uno_frontend/src/app/uno-page/cards-img/Green 1.png" alt="back">
+    <div id="discard_pile">
+      <div class="card top-card red">
+        <div class="bckg"></div>
       </div>
-      <div class="player-gamer-tag"><p>User 2</p></div>
+      <div class="card pile">
+        <div class="bckg"></div>
+      </div>
     </div>
   </div>
+</div>
+       
+        
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="container">
+      <h1>Uno Game</h1>
+     <form (ngSubmit)="onSubmit()" #startGameForm="ngForm">
+  <div class="form-group">
+    <label for="numOfPlayers">Number of players (2 - 10):</label>
+    <input
+      type="number"
+      class="form-control"
+      id="numOfPlayers"
+      [(ngModel)]="numOfPlayers"
+      name="numOfPlayers"
+      min="2"
+      max="10"
+      required
+      (blur)="onNumOfPlayersEntered()"
+    />
+  </div>
+
+  <ng-container *ngIf="showGamerTags">
+    <div *ngFor="let gamerTag of gamerTags; let i = index" class="form-group">
+      <label for="gamerTag{{ i }}">Player {{ i + 1 }} gamer tag:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="gamerTag{{ i }}"
+        [(ngModel)]="gamerTags[i]"
+        name="gamerTag{{ i }}"
+        required
+      />
+    </div>
+  </ng-container>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!startGameForm.form.valid">
+    Start Game
+  </button>
+</form>
+
+      
+    </div>
+    <button (click)="getPlayers()">Get Players</button>
+    <div class="players-container">
+      <div class="player-row">
+        <div class="player-container player-top" *ngIf="players[0]">
+          <div class="player-info">
+            {{ players[0].gameTag }} - Cards in hand: {{ players[0].hand.cards.length }}
+          </div>
+          <div class="player_hand">
+            <ul class="cards-container">
+              <li *ngFor="let card of players[0].hand.cards">
+                <app-uno-card [number]="card.num" [color]="lowercaseFirstLetter(card.color)"></app-uno-card>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="player-row">
+        <div class="player-container player-left" *ngIf="players[1]">
+          <div class="player-info">
+            {{ players[1].gameTag }} - Cards in hand: {{ players[1].hand.cards.length }}
+          </div>
+          <div class="player_hand">
+            <ul class="cards-container">
+              <li *ngFor="let card of players[1].hand.cards">
+                <app-uno-card [number]="card.num" [color]="lowercaseFirstLetter(card.color)"></app-uno-card>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="table"></div>
+        <div class="player-container player-right" *ngIf="players[2]">
+          <div class="player-info">
+            {{ players[2].gameTag }} - Cards in hand: {{ players[2].hand.cards.length }}
+          </div>
+          <div class="player_hand">
+            <ul class="cards-container">
+              <li *ngFor="let card of players[2].hand.cards">
+                <app-uno-card [number]="card.num" [color]="lowercaseFirstLetter(card.color)"></app-uno-card>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    <div>
+      <button (click)="getPlayedCard()">Show Played Card</button>
+
+<div *ngIf="playedCard">
+  <h3>Played Card:</h3>
+  
+  <app-uno-card [number]="playedCard.num" [color]="lowercaseFirstLetter(playedCard.color)"></app-uno-card>
+</div>
+
+
+    </div>
+    
+    
+  </div>
+  <footer class="footer">
+    <p>&copy; 2023 UnoMania. All rights reserved.</p>
+  </footer>
 </body>
 </html>
-

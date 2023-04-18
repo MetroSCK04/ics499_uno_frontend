@@ -1,0 +1,43 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Uno Game</title>
+
+</head>
+<body>
+    <div class="stat-page">
+        <header class="uno-header">
+          <nav>
+            <ul>
+              <li><a routerLink="">Home</a></li>
+              <li><a routerLink="#">Settings</a></li>
+              <li><a routerLink="/stats-page" >Go to Stats</a></li>
+              <li><a routerLink="#">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+        </div>
+        <div class="game-container">
+          <div class="login-box">
+            <h2>Login</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          
+              <label for="username">Username</label>
+              <input type="text" id="username" formControlName="username" required>
+              <label for="password">Password</label>
+              <input type="password" id="password" formControlName="password" required>
+              <button type="submit">Login</button>
+            </form>
+            <div class="create-account-link">
+              <a href="/create-page">Create a new account</a>
+            </div>
+          </div>
+          </div>
+      
+</body>
+<footer class="footer">
+  <p>&copy; 2023 UnoMania. All rights reserved.</p>
+</footer>
+</html>
