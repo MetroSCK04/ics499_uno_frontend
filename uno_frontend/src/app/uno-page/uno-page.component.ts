@@ -18,6 +18,7 @@ export class UnoPageComponent {
   gamerTags: string[] = [''];
   initialHands: Card[][] = [];
   players: Player[] = [];
+
   selectColor: boolean = false ;
   selectedColor: string = "";
 
@@ -26,6 +27,7 @@ export class UnoPageComponent {
   addGamerTag(): void {
     this.gamerTags.push('');
   }
+
   onSubmit(): void {
     this.gamerTags.length = this.numOfPlayers;
     this.startGame(this.numOfPlayers, this.gamerTags);
@@ -52,10 +54,12 @@ export class UnoPageComponent {
     });
   }
   showGamerTags = false;
+  
   onNumOfPlayersEntered() {
     this.showGamerTags = true;
     this.gamerTags = Array(this.numOfPlayers).fill('');
   }
+  
   playedCard: Card | null = null;
 
 getPlayedCard(): void {
