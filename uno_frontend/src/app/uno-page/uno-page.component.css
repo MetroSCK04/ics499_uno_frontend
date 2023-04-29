@@ -219,83 +219,119 @@ body {
   transform-origin: left bottom;
   transform: rotate(-90deg) translate(-24em, 1em);
 }
-
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:900);
-
-.cardnew {
-  width:116px;height:178px;float:left;
-  background:#fff;
-  border-radius:5px;
-  display:table;
-  box-sizing:border-box;
-  padding:5px;
-  margin:10px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size:100px;
-  text-shadow:
-     1px  1px 0 #000000,
-    -1px -1px 0 #000000,
-    -1px  1px 0 #000000,
-     1px -1px 0 #000000,
-     1px  0   0 #000000,
-    -1px  0   0 #000000,
-     0   -1px 0 #000000,
-     0    1px 0 #000000,
-     4px  4px 0 #000000;
-  box-shadow:0 0 10px #aaaaaa;
-  text-align:center;
-  position:relative;
-}
-.cardnew .inner{
-  display:table-cell;
-  vertical-align:middle;
-  border-radius:5px;
-  overflow:hidden;
+.player-cards {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
-.cardnew .mark{
-  display:inline-block;
-  vertical-align:middle;
-  background:#ffffff;
-  margin:auto;
-  padding:0 26px;
-  border-radius:100px 60px / 120px 60px;
-  line-height:1.4;
+.player-cards li {
+  margin-right: 10px;
 }
 
-.cardnew:before,
-.cardnew:after{
-  display:inline-block;
-  position:absolute;
-  line-height:0;
-  font-size:20px;
-  color:#ffffff;
-  text-shadow:
-     1px  1px 0 #000000,
-    -1px -1px 0 #000000,
-    -1px  1px 0 #000000,
-     1px -1px 0 #000000,
-     1px  0   0 #000000,
-    -1px  0   0 #000000,
-     0   -1px 0 #000000,
-     0    1px 0 #000000,
-     2px  2px 0 #000000;
+.wild-card {
+  width: 58px;
+  height: 89px;
+  display: inline-block;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 3px;
+  margin: 5px;
+  box-shadow: 0 0 10px #aaaaaa;
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  background-color: #f8f9fa;
+  padding: 30px; 
 }
 
-.cardnew:before{
-  top:15px;
-  left:10px;
-}
-.cardnew:after{
-  bottom:15px;
-  right:10px;
-  -webkit-transform:rotate(180deg)
-}
-
-.cardnew.blue{
-  color:#0063B3;
+.form-box {
+  width: 300px;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.cardnew.blue .inner{
-  background:#0063B3;
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 3px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:disabled {
+  background-color: #007bff;
+  border-color: #007bff;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+.player-cards div {
+  cursor: pointer;
+}
+li {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+app-uno-card,
+img,
+li:hover app-uno-card {
+  transition: transform 0.2s ease-out;
+  cursor: pointer;
+}
+
+app-uno-card:hover,
+img:hover {
+  transform: scale(1.1);
 }

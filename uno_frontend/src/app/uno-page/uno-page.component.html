@@ -1,111 +1,265 @@
-
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Uno Game</title>
-
-</head>
-<body>
-  <div class="game-container">
-    <div class="game-header">
-      <header class="uno-header">
-        <nav>
-          <ul>
-            <li><a routerLink="">Home</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a routerLink="/stats-page" >Go to Stats</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-    </div>
-    <div class="game-body">
+   <head>
+      <meta charset="utf-8">
+      <title>Uno Game</title>
+   </head>
+   <body>
+      <div class="game-container">
+         <div class="game-header">
+            <header class="uno-header">
+               <nav>
+                  <ul>
+                     <li><a routerLink="">Home</a></li>
+                     <li><a href="#">Settings</a></li>
+                     <li><a routerLink="/stats-page" >Go to Stats</a></li>
+                     <li><a href="#">Contact</a></li>
+                  </ul>
+               </nav>
+            </header>
+         </div>
+         <div class="game-body">
+            <div>
+               <a href="#"  class="btn quit-btn">Quit</a>
+            </div>
+               
+         </div>
+      </div>
       <div>
-        <a href="#"  class="btn quit-btn">Quit</a>
-      </div>
-      <div class="player-area">
-       
-<div class="game-field perspective red">
-  <div id="player">(You)
-    <div class="player_hand">
-      <div class="card red" data-key="0">
-        <div class="bckg"></div>
-      </div>
-      <div class="card red" data-key="1">
-        <div class="bckg"></div>
-      </div>
-      <div class="card blue" data-key="0">
-        <div class="bckg"></div>
-      </div>
-      <div class="card blue" data-key="1">
-        <div class="bckg"></div>
-      </div>
-      <div class="card yellow">
-        <div class="bckg"></div>
-      </div>
-      <div class="card green">
-        <div class="bckg"></div>
-      </div>
-      <div class="card black">
-        <div class="bckg"></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="player_top">Oponent
-    <div class="player_hand">
-      <div class="card turned" data-index="0">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned" data-index="1">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned" data-index="2">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned" data-index="3">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned" data-index="4">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned" data-index="5">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned" data-index="6">
-        <div class="bckg"></div>
-      </div>
-    </div>
-  </div>
-  
- 
-  <div id="piles_area">
-    <div id="draw_pile">
-      <div class="card turned top-card">
-        <div class="bckg"></div>
-      </div>
-      <div class="card turned pile">
-        <div class="bckg"></div>
-      </div>
-    </div>
-    <div id="discard_pile">
-      <div class="card top-card red">
-        <div class="bckg"></div>
-      </div>
-      <div class="card pile">
-        <div class="bckg"></div>
-      </div>
-    </div>
-  </div>
-</div>
+         <div class="container">
+            <h1>Uno Game</h1>
+            
+            <form (ngSubmit)="onSubmit()" #startGameForm="ngForm">
+            <div class="form-group">
+               <label for="numOfPlayers">Number of players (2 - 10):</label>
+               <input
+               type="number"
+               class="form-control"
+               id="numOfPlayers"
+               [(ngModel)]="numOfPlayers"
+               name="numOfPlayers"
+               min="2"
+               max="10"
+               required
+               (blur)="onNumOfPlayersEntered()"
+               />
+            </div>
+            <ng-container *ngIf="showGamerTags">
+               <div *ngFor="let gamerTag of gamerTags; let i = index" class="form-group">
+                  <label for="gamerTag{{ i }}">Player {{ i + 1 }} gamer tag:</label>
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="gamerTag{{ i }}"
+                  [(ngModel)]="gamerTags[i]"
+                  name="gamerTag{{ i }}"
+                  required
+                  />
+               </div>
+            </ng-container>
+            <button type="submit" class="btn btn-primary" [disabled]="!startGameForm.form.valid">
+            Start Game
+            </button>
+            </form>
+         </div>
+         
+         <div class="players-container">
+            <div class="game-field perspective red">
+               <div id="player_left">
+                  <div class="player_hand">
+                     <div class="card turned" data-index="0">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="1">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="2">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="3">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="4">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="5">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="6">
+                        <div class="bckg"></div>
+                     </div>
+                  </div>
+               </div>
+               
+               <div id="player_top" *ngIf="players[0] && currentPlayerIndex === 0"> {{ players[0].gameTag }} - Cards in hand: {{ players[0].hand.cards.length }}
+                  <ul class="player-cards">
+                    <li *ngFor="let card of players[0].hand.cards; let i = index">
+                     <ng-container *ngIf="card.type === 'numbered'">
+                        <app-uno-card [color]="lowercaseFirstLetter(card.color)" [number]="card.num" (click)="shouldPlayCard(i+1, selectedColor)"></app-uno-card>
+                        
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'skip'">
+                        <img [src]="getCardImageSkip(lowercaseFirstLetter(card.color))" alt="{{card.num}} {{card.color}} card" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'draw2'">
+                        <img [src]="getCardImageDraw2(lowercaseFirstLetter(card.color))" alt="{{card.num}} {{card.color}} card" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'reverse'">
+                        <img [src]="getCardImageReverse(lowercaseFirstLetter(card.color))" alt="{{card.num}} {{card.color}} card" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'wild'">
+                        <img alt="My image name" src="./assets/wild.jpg" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>                     
+                       <ng-container *ngIf="card.type === 'wildDraw4'">
+                        <img alt="My image name" src="./assets/wildDraw4.jpg" class="wild-card">
+                       </ng-container>
+                    </li>
+                  </ul>
+                </div>
+               
+               <div id="player_right">
+                  <div class="player_hand">
+                     <div class="card turned" data-index="0">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="1">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="2">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="3">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="4">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="5">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned" data-index="6">
+                        <div class="bckg"></div>
+                     </div>
+                  </div>
+               </div>
+               
+               <div id="player_top" *ngIf="players[1] && currentPlayerIndex === 1"> {{ players[1].gameTag }} - Cards in hand: {{ players[1].hand.cards.length }}
+                  <ul class="player-cards">
+                    <li *ngFor="let card of players[1].hand.cards; let i=index">
+                     <ng-container *ngIf="card.type === 'numbered'">
+                        <app-uno-card [color]="lowercaseFirstLetter(card.color)" [number]="card.num" (click)="shouldPlayCard(i+1, selectedColor)"></app-uno-card>
+                       
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'skip'">
+                        <img [src]="getCardImageSkip(lowercaseFirstLetter(card.color))" alt="{{card.num}} {{card.color}} card" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'draw2'">
+                        <img [src]="getCardImageDraw2(lowercaseFirstLetter(card.color))" alt="{{card.num}} {{card.color}} card" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'reverse'">
+                        <img [src]="getCardImageReverse(lowercaseFirstLetter(card.color))" alt="{{card.num}} {{card.color}} card" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'wild'">
+                        <img alt="My image name" src="./assets/wild.jpg" class="wild-card" (click)="shouldPlayCard(i+1, selectedColor)">
+                      </ng-container>                     
+                       <ng-container *ngIf="card.type === 'wildDraw4'">
+                        <img alt="My image name" src="./assets/wildDraw4.jpg" class="wild-card">
+                       </ng-container>
+                    </li>
+                  </ul>
+                </div>
+            
+               <div id="player_top" *ngIf="players[2] && currentPlayerIndex === 2"> {{ players[2].gameTag }} - Cards in hand: {{ players[2].hand.cards.length }}
+                  <ul *ngFor="let card of players[2].hand.cards" class="player-cards">
+                     <ng-container *ngIf="card.type === 'numbered'">
+                        <app-uno-card [color]="lowercaseFirstLetter(card.color)" [number]="card.num"></app-uno-card>
+                      </ng-container>
+                      <ng-container *ngIf="card.type === 'skip'">
+                        <img [src]="getCardImageSkip(card.color)" alt="{{card.num}} {{card.color}} card" class="wild-card">
+                       </ng-container>
+                       <ng-container *ngIf="card.type === 'draw2'">
+                        <img [src]="getCardImageDraw2(card.color)" alt="{{card.num}} {{card.color}} card" class="wild-card">
+                       </ng-container>
+                       <ng-container *ngIf="card.type === 'reverse'">
+                        <img [src]="getCardImageReverse(card.color)" alt="{{card.num}} {{card.color}} card" class="wild-card">
+                       </ng-container>
+                       <ng-container *ngIf="card.type === 'wild'">
+                        <img alt="My image name" src="./assets/wild.jpg" class="wild-card">
+                      </ng-container>                      
+                       <ng-container *ngIf="card.type === 'wildDraw4'">
+                        <img alt="My image name" src="./assets/wildDraw4.jpg" class="wild-card">
+                       </ng-container>
+                   </ul>
+                   
+               </div>
+             
+               <div id="piles_area">
+                  <div id="draw_pile">
+                     <div class="card turned top-card">
+                        <div class="bckg"></div>
+                     </div>
+                     <div class="card turned pile">
+                        <div class="bckg"></div>
+                     </div>
+                  </div>
+                  <div id="discard_pile">
+                     <div *ngIf="playedCard">
+                        <h3>Played Card</h3>
+                        <ng-container *ngIf="playedCard.type === 'numbered'">
+                           <app-uno-card [color]="lowercaseFirstLetter(playedCard.color)" [number]="playedCard.num"></app-uno-card>
+                         </ng-container>
+                         <ng-container *ngIf="playedCard.type === 'skip'">
+                           <img [src]="getCardImageSkip(lowercaseFirstLetter(playedCard.color))" alt="{{playedCard.num}} {{playedCard.color}} card" class="wild-card">
+                          </ng-container>
+                          <ng-container *ngIf="playedCard.type === 'draw2'">
+                           <img [src]="getCardImageDraw2(lowercaseFirstLetter(playedCard.color))" alt="{{playedCard.num}} {{playedCard.color}} card" class="wild-card">
+                          </ng-container>
+                          <ng-container *ngIf="playedCard.type === 'reverse'">
+                           <img [src]="getCardImageReverse(lowercaseFirstLetter(playedCard.color))" alt="{{playedCard.num}} {{playedCard.color}} card" class="wild-card">
+                          </ng-container>
+                          <ng-container *ngIf="playedCard.type === 'wild'">
+                           <img alt="My image name" src="./assets/wild.jpg" class="wild-card">
+                         </ng-container>                      
+                          <ng-container *ngIf="playedCard.type === 'wildDraw4'">
+                           <img alt="My image name" src="./assets/wildDraw4.jpg" class="wild-card">
+                          </ng-container>
+                     </div>
+                    
+                  </div>
+               </div>
+               <div *ngIf="players[currentPlayerIndex]" class="player-info">
+                  <h4 class="player-tag">Current Player: {{ players[currentPlayerIndex].gameTag }}</h4>
+                  <ng-container *ngIf="hasPlayableCard; else noPlayableCard">
+                      <div class="playable-card-status positive">You have a playable card.</div>
+                      <!-- Play Card input and button -->
+              
+                      <ng-container *ngIf="selectColor === true">
+                          <select id="myDropdown" #colors (change)="onSelected(colors.value)" class="color-dropdown">
+                              <option>Red</option>
+                              <option>Blue</option>
+                              <option>Green</option>
+                              <option>Yellow</option>
+                          </select>
+                      </ng-container>
+              
+                  </ng-container>
+                  <ng-template #noPlayableCard>
+                      <div class="playable-card-status negative">You don't have any playable cards.</div>
+                      <!-- Draw Card button -->
+                      <button (click)="drawCard()" class="draw-card-btn fancy-button">Draw Card</button>
+                  </ng-template>
+              </div>
+              
+              
+            </div>
           
-        
+               
+           
+         </div>
+       
       </div>
-    </div>
-  </div>
-  <footer class="footer">
-    <p>&copy; 2023 UnoMania. All rights reserved.</p>
-  </footer>
-</body>
+      <footer class="footer">
+         <p>&copy; 2023 UnoMania. All rights reserved.</p>
+      </footer>
+   </body>
 </html>

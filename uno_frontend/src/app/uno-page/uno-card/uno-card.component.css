@@ -1,0 +1,105 @@
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:900);
+
+.card {
+    width: 58px; /* reduced from 116px */
+    height: 89px; /* reduced from 178px */
+  float:left;
+  background:#fff;
+  border-radius:5px;
+  display:table;
+  box-sizing:border-box;
+  padding: 3px; /* reduced from 5px */
+  margin: 5px; /* reduced from 10px */
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 50px; /* reduced from 100px */
+  text-shadow:
+     1px  1px 0 #000000,
+    -1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px -1px 0 #000000,
+     1px  0   0 #000000,
+    -1px  0   0 #000000,
+     0   -1px 0 #000000,
+     0    1px 0 #000000,
+     4px  4px 0 #000000;
+  box-shadow:0 0 10px #aaaaaa;
+  text-align:center;
+  position:relative;
+}
+.card .inner{
+  display:table-cell;
+  vertical-align:middle;
+  border-radius:5px;
+  overflow:hidden;
+}
+
+.card .mark{
+  display:inline-block;
+  vertical-align:middle;
+  background:#ffffff;
+  margin:auto;
+  padding: 0 13px; /* reduced from 0 26px */
+  border-radius:100px 60px / 120px 60px;
+  line-height:1.4;
+}
+
+.card:before,
+.card:after{
+  display:inline-block;
+  position:absolute;
+  line-height:0;
+  font-size: 10px; /* reduced from 20px */
+  color:#ffffff;
+  text-shadow:
+     1px  1px 0 #000000,
+    -1px -1px 0 #000000,
+    -1px  1px 0 #000000,
+     1px -1px 0 #000000,
+     1px  0   0 #000000,
+    -1px  0   0 #000000,
+     0   -1px 0 #000000,
+     0    1px 0 #000000,
+     2px  2px 0 #000000;
+}
+
+.card:before{
+    top: 8px; /* reduced from 15px */
+    left: 5px; /* reduced from 10px */
+}
+.card:after{
+    bottom: 8px; /* reduced from 15px */
+    right: 5px; /* reduced from 10px */
+  -webkit-transform:rotate(180deg)
+}
+.card.clr-red {
+  color: #ff0000;
+}
+
+.card.clr-red .inner {
+  background: #ff0000;
+}
+
+.card.clr-blue {
+  color: #0063B3;
+}
+
+.card.clr-blue .inner {
+  background: #0063B3;
+}
+
+.card.clr-green {
+  color: #008000;
+}
+
+.card.clr-green .inner {
+  background: #008000;
+}
+
+.card.clr-yellow {
+  color: #E6CA1E;
+}
+
+.card.clr-yellow .inner {
+  background: #E6CA1E;
+}
