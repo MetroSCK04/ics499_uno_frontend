@@ -33,15 +33,22 @@ export class UnoService {
   getPlayedCard(): Observable<Card> {
     return this.http.get<Card>('http://localhost:8080/uno/played-card'); 
   }
-  // uno-game.service.ts
-  playCard(playerId: number, cardIndex: number): Observable<Card> {
-    return this.http.post<Card>('http://localhost:8080/player/${playerId}/play-card', { cardIndex });
-  }
-  // uno-game.service.ts
-  checkPlayerHasPlayableHand(playerId: number): Observable<boolean> {
-    return this.http.get<boolean>('http://localhost:8080/player/${playerId}/has-playable-hand');
-  }
 
+
+  getNextPlayer(): Observable<number> {
+    return this.http.get<number>('http://localhost:8080/uno/nextPlayer');
+  }
 
   //here
+  currentPlayerHasPlayableCard(): Observable<boolean> {
+    return this.http.get<boolean>('http://localhost:8080/uno/playableCard');
+  }
+  playCard(cardIndex: number, player: Player, selectedColor: string): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/uno/playCard', { cardIndex, player, selectedColor });
+  }
+  
+  drawCard(player: Player): Observable<void> {
+    return this.http.post<void>('http://localhost:8080/uno/drawCard', player);
+  }
+  
 }
