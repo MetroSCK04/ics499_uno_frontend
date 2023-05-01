@@ -34,7 +34,6 @@ export class UnoService {
     return this.http.get<Card>('http://localhost:8080/uno/played-card'); 
   }
 
-
   getNextPlayer(): Observable<number> {
     return this.http.get<number>('http://localhost:8080/uno/nextPlayer');
   }

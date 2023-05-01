@@ -2,7 +2,6 @@ export class Card {
     cardID?: number;
     color: string;
     num: number;
-
     type: string;
   
     constructor(color: string, num: number, type: string) {
