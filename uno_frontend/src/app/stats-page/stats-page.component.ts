@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { StatService } from '../services/stat.service';
+import { Stat } from '../model/stat';
+
 
 @Component({
   selector: 'app-stats-page',
@@ -11,7 +14,7 @@ export class StatsPageComponent {
   public username: string = '';
   message: string = 'Fields are working';
 
-  constructor(private router: Router,private route: ActivatedRoute) { }
+  constructor(private router: Router,private route: ActivatedRoute, private statService: StatService) { }
 
   pageTitle = 'Board Game Stats';
   gamesPlayed = 0;
@@ -26,9 +29,18 @@ export class StatsPageComponent {
     this.selectedPeriod = period;
   }
   ngOnInit() {
-    // Get the username from the parameter
+    this.getStats();
     this.route.queryParams.subscribe(params => {
       this.username = params['username'];
     });
   }
+
+  stats: Stat[] = [];
+  getStats(): void {
+    this.statService.getAllStats().subscribe((stats) => {
+        this.stats = stats;
+    });
+}
+
+  
 }

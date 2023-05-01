@@ -4,6 +4,10 @@ import { Card } from '../model/card';
 import { Player } from '../model/player';
 import { Observable } from 'rxjs'
 import { Hand } from '../model/hand';
+import { Router } from '@angular/router';
+import { Stat } from '../model/stat';
+import { StatService } from '../services/stat.service';
+
 
 
 @Component({
@@ -20,8 +24,8 @@ export class UnoPageComponent {
   players: Player[] = [];
   selectColor: boolean = false ;
   selectedColor: string = "";
-
-  constructor(private unoService: UnoService) {}
+ 
+  constructor(private unoService: UnoService, private router: Router, private statsService: StatService) {}
 
   addGamerTag(): void {
     this.gamerTags.push('');
@@ -49,6 +53,7 @@ export class UnoPageComponent {
       this.checkCurrentPlayerHasPlayableCardAndTakeAction();
       if(!(x == this.players[this.currentPlayerIndex].hand.cards.length))
         this.getNextPlayer();
+        this.checkForWinner();
     });
   }
   showGamerTags = false;
@@ -77,6 +82,8 @@ getNextPlayer(): void {
     (nextPlayerIndex) => {
       this.currentPlayerIndex = nextPlayerIndex;
       this.checkCurrentPlayerHasPlayableCardAndTakeAction();
+      // Set newTurn to true whenever a new player's turn starts
+     
     },
     (error) => {
       console.error("Error getting next player:", error);
@@ -105,14 +112,22 @@ playCard(cardIndex: number, selectedColor: string): void {
   console.log(cardIndex);
   console.log(this.currentPlayerIndex);
   console.log(this.players.length);
+
+  let cardBeingPlayed = this.players[this.currentPlayerIndex].hand.cards[cardIndex-1];
+  
+  
   this.unoService.playCard(cardIndex, this.players[this.currentPlayerIndex],selectedColor).subscribe(
     () => {
+      
       this.getPlayers();
       
       console.log("Played card successfully");
       
     this.showMessage = true;
 
+    if (cardBeingPlayed.type !== 'skip' && cardBeingPlayed.type !== 'reverse') {
+      this.newTurn = true;
+    }
    
     setTimeout(() => {
       this.showMessage = false;
@@ -129,6 +144,7 @@ drawCard(): void {
   this.unoService.drawCard(this.players[this.currentPlayerIndex]).subscribe(
     () => {
       this.getPlayers();
+      this.newTurn = true;
       console.log("Drew card successfully");
     },
     (error) => {
@@ -181,5 +197,33 @@ confirmNextPlayer() {
   this.displayHand = true; // Toggle the displayHand property
 }
 
+gameIsOver: boolean = false;
+  winner: string = '';
+
+  // Call this function whenever a card is played
+  checkForWinner() {
+    for (let player of this.players) {
+      if (player.hand.cards.length === 0) {
+        this.gameIsOver = true;
+        this.winner = player.gameTag;
+        // Update the stats
+        this.statsService.addStats(this.winner, 1).subscribe((stat: Stat) => {
+          console.log("Updated stats successfully:", stat);
+        }, (error) => {
+          console.error("Error updating stats:", error);
+        });
+        break;
+      }
+    }
+  }
+  newTurn: boolean = false;
+confirmNewTurn(): void {
+  this.newTurn = false;
+}
+confirmQuit(): void {
+  if(confirm("Are you sure you want to quit?")) {
+    this.router.navigate(['']); // or wherever you want to route
+  }
+}
 
 }
