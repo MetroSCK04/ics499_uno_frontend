@@ -1,20 +1,200 @@
-.players-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 20px;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-
-.player-row {
-  display: flex;
+body {
+  font-family: Arial;
+  perspective: 100em;
+}
+/* CARDS STYLES */
+.card {
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0.8em;
+  padding: 0.3em;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: 200ms;
+  position: relative;
+}
+.card .bckg {
+  width: 5em;
+  height: 7.678500000000001em;
+  border-radius: 0.5em;
+  overflow: hidden;
+  position: relative;
+}
+.card .bckg::before {
+  content: '';
+  width: 5em;
+  height: 6.5em;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  transform-origin: center center;
+  border-radius: 90% 40%;
+}
+.card .center-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+}
+.card.red {
+  color: #dc251c;
+}
+.card.red .bckg {
+  background-color: #dc251c;
+}
+.card.yellow {
+  color: #fcf604;
+}
+.card.yellow .bckg {
+  background-color: #fcf604;
+}
+.card.blue {
+  color: #0493de;
+}
+.card.blue .bckg {
+  background-color: #0493de;
+}
+.card.green {
+  color: #018d41;
+}
+.card.green .bckg {
+  background-color: #018d41;
+}
+.card.black {
+  color: #1f1b18;
+}
+.card.black .bckg {
+  background-color: #1f1b18;
+}
+.card.turned:hover {
+  cursor: default;
+}
+.card.turned .bckg {
+  background-color: #1f1b18;
+}
+.card.turned .bckg::before {
+  background-color: #dc251c;
+}
+.game-field #piles_area {
+  position: relative;
+  border-radius: 4em;
+  transition: 200ms;
+}
+.game-field.yellow #piles_area {
+  background-color: rgba(252,246,4,0.4);
+}
+.game-field.blue #piles_area {
+  background-color: rgba(4,147,222,0.4);
+}
+.game-field.red #piles_area {
+  background-color: rgba(220,37,28,0.4);
+}
+.game-field.green #piles_area {
+  background-color: rgba(1,141,65,0.4);
+}
+#draw_pile {
+  position: absolute;
+  left: 5em;
+  top: 5em;
+}
+#draw_pile .card.top-card,
+#draw_pile .card.pile {
+  position: absolute;
+}
+#draw_pile .card.pile {
+  box-shadow: 0px 2px #fff, 0px 4px rgba(0,0,0,0.16), 0px 6px #fff, 0px 8px rgba(0,0,0,0.16), 0px 10px #fff, 0px 12px rgba(0,0,0,0.16), 0px 14px #fff, 0px 16px rgba(0,0,0,0.16), 0px 18px #fff, 0px 20px rgba(0,0,0,0.16);
+}
+#draw_pile .card.pile:hover {
+  transform: none;
+}
+#draw_pile .card.top-card {
+  z-index: 100;
+  box-shadow: none;
+}
+#draw_pile .card.top-card:hover {
+  box-shadow: 0px 4px rgba(0,0,0,0.16);
+  cursor: pointer;
+  transform: translateY(1em);
+}
+#discard_pile {
+  position: absolute;
+  left: 12em;
+  top: 5.7em;
+}
+#discard_pile .card.top-card,
+#discard_pile .card.pile {
+  position: absolute;
+}
+#discard_pile .card.pile {
+  box-shadow: 0px 2px #fff, 0px 4px rgba(0,0,0,0.16), 0px 6px #fff, 0px 8px rgba(0,0,0,0.16);
+}
+#discard_pile .card.pile:hover {
+  transform: none;
+}
+#discard_pile .card.top-card {
+  z-index: 100;
+  box-shadow: none;
+}
+.game-field {
+  height: 100%;
+  display: grid;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
+  align-content: center;
+  grid-gap: 0.5em;
+  grid-template-columns: 12em 24em 12em;
+  grid-template-rows: 12em 24em 12em;
 }
-
+.game-field.perspective {
+  transform: rotateX(30deg);
+}
+#piles_area {
+  grid-area: 2/2;
+}
+#player {
+  grid-area: 3/2;
+}
+#player_left {
+  grid-area: 2/1;
+}
+#player_top {
+  grid-area: 1/2;
+}
+#player_right {
+  grid-area: 2/3;
+}
+.player_hand {
+  position: relative;
+}
+.player_hand .card {
+  position: absolute;
+}
+.player_hand .card:nth-child(1) {
+  left: 2.2em;
+}
+.player_hand .card:nth-child(2) {
+  left: 4.4em;
+}
+.player_hand .card:nth-child(3) {
+  left: 6.600000000000001em;
+}
+.player_hand .card:nth-child(4) {
+  left: 8.8em;
+}
+.player_hand .card:nth-child(5) {
+  left: 11em;
+}
+.player_hand .card:nth-child(6) {
+  left: 13.200000000000001em;
+}
 .player_hand .card:nth-child(7) {
   left: 15.400000000000002em;
 }
@@ -154,4 +334,183 @@ li:hover app-uno-card {
 app-uno-card:hover,
 img:hover {
   transform: scale(1.1);
+}
+.message-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 80px;
+  width: 200px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+}
+
+.message-box p {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.message-box button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.message-box button:hover {
+  background-color: #0056b3;
+}.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px 20px 30px 20px; /* Increase bottom padding */
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+}
+
+.player-tag {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #212529;
+}
+
+.playable-card-status {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #212529;
+}
+
+.playable-card-status.positive {
+  color: #28a745;
+}
+
+.playable-card-status.negative {
+  color: #dc3545;
+}
+
+.color-dropdown {
+  margin-bottom: 20px;
+  padding: 6px;
+  font-size: 14px;
+  color: #212529;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.draw-card-btn, .fancy-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.draw-card-btn:hover, .fancy-button:hover {
+  background-color: #0056b3;
+}
+.draw_button{
+  margin-top: 20px;;
+}
+title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: #DF8453;
+  --color-2: #3D8DAE;
+  --color-3: #E4A9A8;
+}
+
+.title-word-2 {
+  --color-1: #DBAD4A;
+  --color-2: #ACCFCB;
+  --color-3: #17494D;
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+.title-word-4 {
+  --color-1: #3D8DAE;
+  --color-2: #DF8453;
+  --color-3: #E4A9A8;
+}
+
+@keyframes color-animation-1 {
+  0%, 32%, 100% { color: #DF8453; }
+  33%, 65%     { color: #3D8DAE; }
+  66%, 99%     { color: #E4A9A8; }
+}
+
+@keyframes color-animation-2 {
+  0%, 32%, 100% { color: #DBAD4A; }
+  33%, 65%     { color: #ACCFCB; }
+  66%, 99%     { color: #17494D; }
+}
+.title-word-1 {
+  margin-right: 10px;
+  animation: color-animation-1 4s linear infinite;
+}
+
+.title-word-2 {
+  margin-right: 10px;
+  animation: color-animation-2 4s linear infinite;
+}
+@keyframes color-animation-3 {
+  0%, 32%, 100% { color: #ACCFCB; }
+  33%, 65%     { color: #E4A9A8; }
+  66%, 99%     { color: #ACCFCB; }
+}
+
+@keyframes color-animation-4 {
+  0%, 32%, 100% { color: #3D8DAE; }
+  33%, 65%     { color: #DF8453; }
+  66%, 99%     { color: #E4A9A8; }
+}
+
+.title-word-3 {
+  margin-right: 10px;
+  animation: color-animation-3 4s linear infinite;
+}
+
+.title-word-4 {
+  animation: color-animation-4 4s linear infinite;
+}
+
+
+
+/* Here are just some visual styles. 🖌 */
+
+.containerwinner {
+  display: grid;
+  
+  text-align: center;
+  height: 100vh
+}
+
+.titlewinner {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 4.5vw;
+  text-transform: uppercase;
 }

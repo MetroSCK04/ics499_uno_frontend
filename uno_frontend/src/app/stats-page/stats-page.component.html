@@ -10,31 +10,38 @@
         <nav>
           <ul>
             <li><a routerLink="">Home</a></li>
-            <li><a href="#">Settings</a></li>
+            
             <li><a routerLink="/stats-page" >Go to Stats</a></li>
             <li *ngIf="!username"><a routerLink="/login-page" >Login</a></li>
       <li *ngIf="username"><span>Welcome, {{ username }}!</span></li>
           </ul>
         </nav>
       </header>
-      <p class="uno-header">Here are your Stats</p>
+      
       <div class="button-group">
 
-        <button class="btn" (click)="showStats('7 days')">7 Days</button>
-        <button class="btn" (click)="showStats('1 month')">1 Month</button>
-        <button class="btn" (click)="showStats('6 months')">6 Months</button>
+        <button class="btn" (click)="showStats('All Stat')"></button>
+        <button class="btn" (click)="showStats('All Stat')">All Stats</button>
+        <button class="btn" (click)="showStats('All Stat')"></button>
       </div>
       
-    <div class="stats" >
-      
-      <p>{{ selectedPeriod }} Stats:</p>
-      <ul>
-        <li>Stat 1</li>
-        <li>Stat 2</li>
-        <li>Stat 3</li>
-      </ul>
-    </div>
-   
+      <div class="">
+        <p>{{ selectedPeriod }}</p>
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>Gamer Tag</th>
+              <th>Games Won</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stat of stats">
+              <td>{{ stat.gameTag }}</td>
+              <td>{{ stat.gamesWon }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </body>
 </html>
