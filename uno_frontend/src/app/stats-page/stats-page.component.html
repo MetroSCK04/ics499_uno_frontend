@@ -10,7 +10,7 @@
         <nav>
           <ul>
             <li><a routerLink="">Home</a></li>
-            <li><a href="#">Settings</a></li>
+            
             <li><a routerLink="/stats-page" >Go to Stats</a></li>
             <li *ngIf="!username"><a routerLink="/login-page" >Login</a></li>
       <li *ngIf="username"><span>Welcome, {{ username }}!</span></li>
@@ -25,8 +25,8 @@
         <button class="btn" (click)="showStats('All Stat')"></button>
       </div>
       
-      <div class="stats">
-        <p>{{ selectedPeriod }} Stats:</p>
+      <div class="">
+        <p>{{ selectedPeriod }}</p>
         <table class="stats-table">
           <thead>
             <tr>

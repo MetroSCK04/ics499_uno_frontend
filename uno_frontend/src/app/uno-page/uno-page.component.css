@@ -428,3 +428,89 @@ img:hover {
 .draw_button{
   margin-top: 20px;;
 }
+title-word {
+  animation: color-animation 4s linear infinite;
+}
+
+.title-word-1 {
+  --color-1: #DF8453;
+  --color-2: #3D8DAE;
+  --color-3: #E4A9A8;
+}
+
+.title-word-2 {
+  --color-1: #DBAD4A;
+  --color-2: #ACCFCB;
+  --color-3: #17494D;
+}
+
+.title-word-3 {
+  --color-1: #ACCFCB;
+  --color-2: #E4A9A8;
+  --color-3: #ACCFCB;
+}
+
+.title-word-4 {
+  --color-1: #3D8DAE;
+  --color-2: #DF8453;
+  --color-3: #E4A9A8;
+}
+
+@keyframes color-animation-1 {
+  0%, 32%, 100% { color: #DF8453; }
+  33%, 65%     { color: #3D8DAE; }
+  66%, 99%     { color: #E4A9A8; }
+}
+
+@keyframes color-animation-2 {
+  0%, 32%, 100% { color: #DBAD4A; }
+  33%, 65%     { color: #ACCFCB; }
+  66%, 99%     { color: #17494D; }
+}
+.title-word-1 {
+  margin-right: 10px;
+  animation: color-animation-1 4s linear infinite;
+}
+
+.title-word-2 {
+  margin-right: 10px;
+  animation: color-animation-2 4s linear infinite;
+}
+@keyframes color-animation-3 {
+  0%, 32%, 100% { color: #ACCFCB; }
+  33%, 65%     { color: #E4A9A8; }
+  66%, 99%     { color: #ACCFCB; }
+}
+
+@keyframes color-animation-4 {
+  0%, 32%, 100% { color: #3D8DAE; }
+  33%, 65%     { color: #DF8453; }
+  66%, 99%     { color: #E4A9A8; }
+}
+
+.title-word-3 {
+  margin-right: 10px;
+  animation: color-animation-3 4s linear infinite;
+}
+
+.title-word-4 {
+  animation: color-animation-4 4s linear infinite;
+}
+
+
+
+/* Here are just some visual styles. 🖌 */
+
+.containerwinner {
+  display: grid;
+  
+  text-align: center;
+  height: 100vh
+}
+
+.titlewinner {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 4.5vw;
+  text-transform: uppercase;
+}

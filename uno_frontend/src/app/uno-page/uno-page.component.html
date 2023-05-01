@@ -11,9 +11,9 @@
                <nav>
                   <ul>
                      <li><a routerLink="">Home</a></li>
-                     <li><a href="#">Settings</a></li>
+                     
                      <li><a routerLink="/stats-page" >Go to Stats</a></li>
-                     <li><a href="#">Contact</a></li>
+                     <li ><a routerLink="/login-page" >Login</a></li>
                   </ul>
                </nav>
             </header>
@@ -120,9 +120,17 @@
                   </div>
                 </ng-container>
                </ng-container>
-               <div id="player_top" *ngIf="gameIsOver"  >
-                  {{ winner }} is the winner!
-                </div>
+               <div  id="player_top" *ngIf="gameIsOver"  >
+                  <div  class="containerwinner">
+                      <h2 class="titlewinner">
+                          <span class="title-word title-word-1">{{ winner }}</span>
+                          <span class="title-word title-word-2">is</span>
+                          <span class="title-word title-word-3">the</span>
+                          <span class="title-word title-word-4">winner!</span>
+                      </h2>
+                  </div>
+              </div>
+              
                 <!-- Add this where you want the message box to appear -->
 <div id="player_top" *ngIf="newTurn && !gameIsOver" class="message-box">
    <p>Turn passed to {{ players[currentPlayerIndex].gameTag }}</p>

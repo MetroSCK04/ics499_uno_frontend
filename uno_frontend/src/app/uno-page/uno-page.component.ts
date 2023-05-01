@@ -56,6 +56,19 @@ export class UnoPageComponent {
         this.checkForWinner();
     });
   }
+  onGamerTagKeyUp(event: KeyboardEvent, index: number) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.value.length >= 2 && index < this.gamerTags.length - 1) {
+      const nextInput = inputElement.nextElementSibling as HTMLInputElement;
+      if (nextInput) {
+        nextInput.focus();
+      }
+    }
+  }
+  
+  
+  
+  
   showGamerTags = false;
   onNumOfPlayersEntered() {
     this.showGamerTags = true;
